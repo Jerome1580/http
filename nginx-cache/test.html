@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>this is content . and data is <span id="data"></span></div>
+    <button>click me</button>
+</body>
+
+
+</html>
+<script>
+    var index = 0
+    fetch('/data',{
+        headers:{
+            'X-Test':index++  // 每次发送请求验证不一样,不能使用缓存
+        }
+    }).then(function(res){
+        return res.text()
+    }).then(function(text){
+        document.getElementById('data').innerText = text
+    })
+    
+</script>
